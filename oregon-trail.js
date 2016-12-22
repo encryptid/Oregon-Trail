@@ -60,6 +60,8 @@ function makeWagon(capacity) {
 
 let wagon = makeWagon(5);
 console.log(wagon);
+console.log(wagon.wagCap);
+wagon.wagCap
 
 // hunt(traveler)
 // 50% chance to increase the traveler's food by 100 (successful hunt), and 50% to increase it by 0 (unsuccessful hunt).
@@ -99,22 +101,63 @@ console.log (eat(traveler2));
 
 // join(wagon, traveler)
 // Add the traveler to the wagon if there is space. If there is not enough capacity, don't add them.
+/**
+ * steps:
+ * 1. create function
+ * 2. add parameters (wagon, traveler)
+ */
 function join(wagon, traveler) { // two parameters
-    if (wagon.passengers < wagon.passengers.length) {
+    if (wagon.passengers.length < wagon.wagCap) {
     wagon.passengers.push(traveler);
-    return traveler.traveler + " has entered the wagon."
+    return wagon.passengers.length;
+    //return traveler.traveler + " has entered the wagon."
     } else {
         return "There isn't enough room for " + traveler.traveler + "."
     }
 }
-
-    console.log(join(wagon, traveler));
-    console.log(join(wagon, traveler2));
+    console.log(wagon.passengers.length);
+    join(wagon, traveler2);
+    console.log(wagon.passengers.length);
+    join(wagon, traveler);
+    console.log(wagon.passengers.length);
+    join(wagon, traveler);
+    console.log(wagon.passengers.length);
+    join(wagon, traveler2);
+    console.log(wagon.passengers.length);
+    join(wagon, traveler)
+    console.log(wagon.passengers.length);
+    join(wagon, traveler);
+    console.log(wagon.passengers.length);
+    join(wagon, traveler);
+    console.log(wagon.passengers.length);
 
 // quarantine(wagon)
 // Return true if there is at least one unhealthy person in the wagon. Return false if not.
 
-// food(wagon)
+function quarantine(wagon) {
+    for (let i = 0; i < wagon.passengers.length; i++) {
+    if (wagon.passengers[i].isHealthy === true) {
+        return true
+    } else {
+    return false
+        }
+    }
+
+}
+
+    let status = quarantine(wagon);
+    console.log(status);
+
 // Return the total amount of food among all occupants of the wagon.
 
+function foodTotal(wagon) {
+    let total = 0;
+    for (let i = 0; i < wagon.passengers.length; i++) {
+        total = total + wagon.passengers[i].food;
+        }
+        return total
+}
 
+console.log(foodTotal(wagon));
+
+// I DID IT!!!!!!!!! (I think...)
